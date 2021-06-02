@@ -6,7 +6,8 @@ class NewsController extends Controller {
     const dataList = {
       list: [
         { id: 1, title: 'this is news 1', url: '/news/1' },
-        { id: 2, title: 'this is news 2', url: '/news/2' }
+        { id: 2, title: 'this is news 2', url: '/news/2' },
+        { id: 3, title: 'this is upload', url: '/upload' }
       ]
     }
 

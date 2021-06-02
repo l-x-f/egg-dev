@@ -1,4 +1,5 @@
-/* eslint valid-jsdoc: "off" */
+/* eslint valid-jsdoc: "off"     */
+/* eslint-disable array-bracket-spacing   */
 
 'use strict'
 const path = require('path')
@@ -22,7 +23,7 @@ module.exports = appInfo => {
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
-    middleware: ['gzip'],
+    middleware: ['gzip', 'errorHandler'],
 
     // 配置 gzip 中间件的配置
     gzip: {
@@ -48,13 +49,17 @@ module.exports = appInfo => {
   }
 
   config.cors = {
-    origin: '*', //匹配规则  域名+端口  *则为全匹配
+    origin: '*', // 匹配规则  域名+端口  *则为全匹配
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS'
   }
 
   config.multipart = {
     mode: 'file',
     fileSize: '50mb'
+  }
+
+  config.jwt = {
+    secret: 'jwt' // 自定义 token 的加密条件字符串
   }
 
   return {

@@ -1,7 +1,7 @@
 /* eslint-disable strict */
 const { Controller } = require('egg')
-const fs = require('fs')
 const path = require('path')
+const { promises: fs } = require('fs')
 
 class UploadController extends Controller {
   async get() {
@@ -10,10 +10,8 @@ class UploadController extends Controller {
   async upload() {
     const file = this.ctx.request.files[0]
     console.log(file)
-    const buf = fs.readFileSync(file.filepath)
-    fs.writeFile(path.join(__dirname, `../files/${file.filename}`), buf, err => {
-      console.log(err)
-    })
+    const buf = await fs.readFile(file.filepath)
+    await fs.writeFile(path.join(__dirname, `../files/${file.filename}`), buf)
     this.ctx.body = file.filename
   }
 }
