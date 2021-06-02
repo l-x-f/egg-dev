@@ -1,0 +1,5 @@
+.news-view .item{
+    list-style: none;
+    color: aqua;
+    border:1px solid red;
+}

@@ -1,0 +1,20 @@
+logs/
+npm-debug.log
+yarn-error.log
+node_modules/
+coverage/
+
+run/
+.DS_Store
+*.sw*
+*.un~
+typings/
+.nyc_output/
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
