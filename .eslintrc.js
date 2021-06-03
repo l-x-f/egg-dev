@@ -37,6 +37,7 @@ module.exports = {
         after: true
       }
     ],
-    strict: 0
+    strict: 0,
+    'array-bracket-spacing': 0
   }
 }
