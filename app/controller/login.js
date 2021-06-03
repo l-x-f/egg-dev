@@ -9,9 +9,8 @@ class LoginController extends Controller {
     if (ctx.request.body.account !== 'admin') {
       ctx.body = {
         data: {
-          code: '0',
-          success: '账号错误',
-          data: '账号错误'
+          code: 0,
+          message: '账号错误'
         }
       }
       return
@@ -19,9 +18,8 @@ class LoginController extends Controller {
     if (ctx.request.body.password !== '12345678') {
       ctx.body = {
         data: {
-          code: '0',
-          success: '密码错误',
-          data: '密码错误'
+          code: 0,
+          message: '密码错误'
         }
       }
       return
@@ -39,7 +37,7 @@ class LoginController extends Controller {
 
     ctx.body = {
       data: {
-        code: '1',
+        code: 1,
         success: '成功',
         data: token
       }

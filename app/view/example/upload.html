@@ -39,13 +39,13 @@
           },
           async uploadImage(file, fileType) {
             if (!file) return alert('没文件')
+            const token = localStorage.getItem('token')
             const requestConfig = {
               // baseURL: 'http://58.87.123.220:8080',
               baseURL: 'http://127.0.0.1:7001',
               headers: {
                 'Content-Type': 'multipart/form-data',
-                authorization:
-                  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50IjoiYWRtaW4iLCJwYXNzd29yZCI6IjEyMzQ1Njc4IiwiaWF0IjoxNjIyNjIwODIyLCJleHAiOjE2MjMyMjU2MjJ9._JmOlQkQm4t6ehVbTcb4ZcVWsSq6K0H9wEIc-HLDOEQ'
+                authorization: token
               }
             }
 

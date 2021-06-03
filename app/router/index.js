@@ -1,10 +1,11 @@
 'use strict'
+const users = require('./users')
 
 /**
  * @param {Egg.Application} app - egg application
  */
 module.exports = app => {
-  // const gzip = app.middleware.gzip({ threshold: 1024 })
+  const gzip = app.middleware.gzip({ threshold: 1024 })
   const jwt = app.middleware.jwt(app.config.jwt)
 
   const { router, controller } = app
@@ -15,4 +16,6 @@ module.exports = app => {
   router.post('/login', controller.login.login)
   router.get('/upload', controller.upload.get)
   router.post('/upload', jwt, controller.upload.upload)
+  // 注册users
+  users(app, { jwt, gzip })
 }

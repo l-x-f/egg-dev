@@ -50,6 +50,7 @@
 
     <script>
       const { createApp, reactive, ref, toRefs } = Vue
+      const { ElMessage } = ElementPlus
 
       const App = {
         name: 'Login',
@@ -78,15 +79,20 @@
                   method: 'post',
                   data: state.loginForm
                 })
-                console.log(JSON.stringify(data))
-                ElementPlus.ElMessage.success('登录成功')
-                setTimeout(() => {
-                  location.href = '/news'
-                }, 1000)
+
+                if (data.data.code === 1) {
+                  ElMessage.success('登录成功')
+                  localStorage.setItem('token', data.data.data)
+                  setTimeout(() => {
+                    location.href = '/news'
+                  }, 1000)
+                } else {
+                  ElMessage.error(data.data.message)
+                }
               }
             } catch (error) {
               console.log(error, 'e')
-              ElementPlus.ElMessage.error('请完整输入表单')
+              ElMessage.error('请完整输入表单')
             }
             state.loading = false
           }
@@ -94,7 +100,6 @@
           const resetForm = () => {
             loginFormInstance.value.resetFields()
           }
-          console.log('start success')
 
           return {
             loginFormInstance,

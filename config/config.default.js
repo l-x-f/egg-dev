@@ -62,6 +62,17 @@ module.exports = appInfo => {
     secret: 'jwt' // 自定义 token 的加密条件字符串
   }
 
+  config.sequelize = {
+    dialect: 'mysql',
+    host: '127.0.0.1',
+    port: '3306',
+    database: 'database_development',
+    user: 'root',
+    // 密码
+    password: 'lxf@0627',
+    timezone: '+08:00'
+  }
+
   return {
     ...config,
     ...userConfig
